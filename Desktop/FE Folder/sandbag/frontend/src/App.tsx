@@ -45,7 +45,7 @@ function App() {
   const [changesMade, setChangesMade] = useState(0)
 
   // const serverPort = "http://localhost:5000/"
-  const serverPort = "https://sandbag-golf.heroku.com/"
+  const serverPort = "https://sandbag-golf.herokuapp.com/"
 
   return (
     <SandbagContext.Provider value={{loggedInUser, setLoggedInUser, allUserRounds, setAllUserRounds, userHandicap, setUserHandicap, changesMade, setChangesMade, serverPort}}>
