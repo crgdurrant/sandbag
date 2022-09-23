@@ -1,6 +1,6 @@
 
 // const serverPort = 'http://localhost:5000/'
-const serverPort = "https://sandbag-golf.heroku.com/"
+const serverPort = "https://sandbag-golf.herokuapp.com/"
 
 export function HandicapCalculation(roundsArr: object[], setFunction: any){
 
