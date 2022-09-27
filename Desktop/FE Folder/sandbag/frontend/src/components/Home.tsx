@@ -33,7 +33,9 @@ export default function Home(){
         <p className="slogan home-slogan">Hi {loggedInUser.firstName}, your <span className="bolder">very accurate</span> and <span className="bolder">extremely official</span> handicap index is</p>
         <div className="circle">
           <h2 className="handicap-large">
-            {userHandicap === "" ? "N/A" : userHandicap}
+            {userHandicap === "" 
+            ? "N/A" 
+            : userHandicap}
           </h2>
         </div>
         <IconButton onClick={()=>navigate("/newround")} sx={{backgroundColor: '#F1F0CF', marginTop: '3em','&:hover': {backgroundColor: '#f2f1d3'}}}>

@@ -81,6 +81,7 @@ export default function Login() {
         <p className="slogan">The <span className="bolder">very accurate</span> and <span className="bolder">extremely official</span> handicap app</p>
         <div className="login-box">
           <h5 className="box-title">Login</h5>
+          <p className="login-text">Hint: username <strong>tiger@woods.com</strong> & password <strong>1234</strong> to poke around.</p>
           <div className="input-group">
           <LoginTextField
             name="email"

@@ -2,6 +2,9 @@ import React, { useContext, useState } from "react";
 import { SandbagContext } from "../App";
 import { LoginButton } from "./Login";
 import { LoginTextField } from "./Login";
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+import { useNavigate } from "react-router-dom";
 
 type newUser = {
   firstName: string,
@@ -25,6 +28,16 @@ export default function Register(){
 
   const { serverPort } = useContext(SandbagContext)
 
+  const navigate = useNavigate()
+
+  const [open, setOpen] = useState(false);
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const handleToggle = () => {
+    setOpen(!open);
+  };
+
   const handleChange = (
     e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
   ) => {
@@ -34,9 +47,8 @@ export default function Register(){
       });
   };
 
-  async function createUser(e: any){
-    e.preventDefault()
-      const newUser = { ...newUserDetails }
+  async function createUser(){
+    const newUser = { ...newUserDetails }
 
     await fetch(`${serverPort}addUser`, {
       method: "POST",
@@ -49,6 +61,13 @@ export default function Register(){
       window.alert(error)
       return
     })
+  }
+
+  function userCreateRedirect(){
+    handleToggle()
+    setTimeout(createUser, 2000)
+    // navigate("/")
+    // handleClose()
   }
 
   return (
@@ -120,9 +139,17 @@ export default function Register(){
             }}
             onChange={handleChange}
             />
-          <LoginButton variant="contained" onClick={createUser}>
+          <LoginButton variant="contained" onClick={userCreateRedirect}>
             Register
           </LoginButton>
+          <Backdrop
+            sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+            open={open}
+            onClick={handleClose}
+            transitionDuration={80}
+            >
+            <CircularProgress color="inherit" />
+          </Backdrop>
             </div>
         </div>
       </div>

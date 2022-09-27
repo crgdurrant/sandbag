@@ -1,4 +1,4 @@
-import React, {useState, createContext, useEffect} from 'react';
+import React, {useState, createContext} from 'react';
 import './App.css';
 import Login from './components/Login';
 import Register from './components/Register';
