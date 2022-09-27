@@ -1,4 +1,4 @@
-import React, {useState, createContext} from "react";
+import React, {useState, createContext, useContext} from "react";
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
@@ -10,8 +10,11 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { IconButton } from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
 import { useNavigate } from "react-router-dom";
+import { SandbagContext } from "../App";
 
 export default function Menu(){
+
+  const { loggedInUser } = useContext(SandbagContext)
 
   const [menuState, setMenuState] = useState(false)
 
@@ -42,7 +45,7 @@ export default function Menu(){
           <div className="pic">
             <img src={require("../smile.png")} alt="" className="menu-pic" />
           </div>
-          <div className="name">Craig Durrant</div>
+          <div className="name">{loggedInUser.firstName} {loggedInUser.lastName}</div>
         </div>
         <List >
             <ListItem key="account" disablePadding>
